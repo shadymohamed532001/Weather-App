@@ -4,21 +4,26 @@ import 'package:http/http.dart' as http;
 
 import '../modeals/Weather Moedeal.dart';
 
-class WeatherServies{
+class WeatherService {
   String baseUrl = 'http://api.weatherapi.com/v1';
-  String apiKey = 'a59d9bb344994444af5145447232901';
-  Future<WeatherModeal?> WeatherGetData({required String CityName})async
-  {
-    WeatherModeal? weather ;
-    try {
-      Uri Url = Uri.parse('$baseUrl/forecast.json?key=$apiKey&q=$CityName&days=3');
-      http.Response response = await  http.get(Url);
-      Map<String,dynamic>Data = jsonDecode(response.body);
-      weather = WeatherModeal.fromJson(Data: Data);
-    }catch(e)
-    {
-      print(e);
+
+  String apiKey = '3677bed892474b30b7a122242220806';
+
+  Future<WeatherModel> getWeather({required String cityName}) async {
+    Uri url =
+    Uri.parse('$baseUrl/forecast.json?key=$apiKey&q=$cityName&days=7');
+    http.Response response = await http.get(url);
+
+    if (response.statusCode == 400) {
+      var data  = jsonDecode(response.body);
+      throw Exception(data['error']['message']);
     }
+    Map<String, dynamic> data = jsonDecode(response.body);
+
+    WeatherModel weather = WeatherModel.fromJson(data);
+
     return weather;
   }
+
+
 }

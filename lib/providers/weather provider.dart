@@ -1,20 +1,16 @@
-
-
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../modeals/Weather Moedeal.dart';
 
-class Weatherprovider extends ChangeNotifier
-{
-   WeatherModeal? _WeatherData;
-   set WeatherData (WeatherModeal? weather)
-   {
-      _WeatherData =weather ;
+
+class WeatherProvider extends ChangeNotifier {
+   WeatherModel? _weatherData;
+
+   String? cityName;
+   set weatherData(WeatherModel? weather) {
+      _weatherData = weather;
       notifyListeners();
    }
-   WeatherModeal? get WeatherData => _WeatherData;
 
-
-
-
+   WeatherModel? get weatherData => _weatherData;
 }

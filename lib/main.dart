@@ -1,17 +1,25 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:weatherapp_th/pages/home%20page.dart';
-import 'package:weatherapp_th/providers/weather%20provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weatherapp_th/Cubit/Cubit.dart';
+import 'package:weatherapp_th/pages/DataPage.dart';
+import 'package:weatherapp_th/Widget/CustomDataPage.dart';
+import 'package:weatherapp_th/pages/HomePage.dart';
+import 'package:weatherapp_th/pages/serach%20page.dart';
+import 'package:weatherapp_th/weather%20servies/weather%20servies.dart';
+
+import 'BlocObserver.dart';
 
 void main() {
-  runApp( ChangeNotifierProvider(
-      create: (BuildContext context)
-      {
-        return Weatherprovider();
+  Bloc.observer = MyBlocObserver();
+
+  runApp(
+    BlocProvider(
+      create: (context) {
+        return WeatherCubit(service: WeatherService());
       },
-      child: MyApp()));
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -20,11 +28,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(
-            primarySwatch : Provider.of<Weatherprovider>(context).WeatherData == null ? Colors.blue : Provider.of<Weatherprovider>(context).WeatherData!.GetColor()
-        ),
-        debugShowCheckedModeBanner: false,
-        home: HomeScrean()
+      routes: {
+        HomePage.id: (context) =>  HomePage(),
+        SearchPage.id: (context) => SearchPage(),
+        DataPage.id: (context) => DataPage(),
+        CustomDataPage.id : (context)=> CustomDataPage(),
+      },
+      initialRoute: HomePage.id,
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          // primarySwatch: Provider.of<WeatherProvider>(context).weatherData == null ?  Colors.blue : Provider.of<WeatherProvider>(context).weatherData!.getThemeColor()  ,
+          ),
+      home:  HomePage(),
     );
   }
 }
