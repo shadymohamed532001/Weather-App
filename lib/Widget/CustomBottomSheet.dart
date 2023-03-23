@@ -45,7 +45,7 @@ class CustomBottomSheet extends StatelessWidget {
                       padding: const EdgeInsets.all(16),
                       child: CustomTextFiled(
                         controller: controller,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white60
                         ),
                         hintText: 'Enter a city',

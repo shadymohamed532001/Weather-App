@@ -4,7 +4,6 @@ import 'package:weatherapp_th/Cubit/Cubit.dart';
 import 'package:weatherapp_th/pages/DataPage.dart';
 import 'package:weatherapp_th/Widget/CustomDataPage.dart';
 import 'package:weatherapp_th/pages/HomePage.dart';
-import 'package:weatherapp_th/pages/serach%20page.dart';
 import 'package:weatherapp_th/weather%20servies/weather%20servies.dart';
 
 import 'BlocObserver.dart';
@@ -30,15 +29,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         HomePage.id: (context) =>  HomePage(),
-        SearchPage.id: (context) => SearchPage(),
         DataPage.id: (context) => DataPage(),
         CustomDataPage.id : (context)=> CustomDataPage(),
       },
       initialRoute: HomePage.id,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          // primarySwatch: Provider.of<WeatherProvider>(context).weatherData == null ?  Colors.blue : Provider.of<WeatherProvider>(context).weatherData!.getThemeColor()  ,
-          ),
       home:  HomePage(),
     );
   }

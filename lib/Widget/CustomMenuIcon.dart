@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class MenuIcon extends StatelessWidget {
-    MenuIcon({ this.color,this.onTap});
+    MenuIcon({super.key,  this.color,this.onTap});
 
   Color? color;
     void Function()? onTap;

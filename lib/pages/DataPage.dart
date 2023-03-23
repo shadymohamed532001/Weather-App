@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weatherapp_th/Cubit/Cubit.dart';
 import 'package:weatherapp_th/Cubit/States.dart';
 import 'package:weatherapp_th/Widget/CustomDataPage.dart';
-import 'package:weatherapp_th/pages/serach%20page.dart';
-
 import '../modeals/Weather Moedeal.dart';
 
 // ignore: must_be_immutable
@@ -25,7 +23,7 @@ class DataPage extends StatelessWidget {
             );
           }
           else if (state is WeatherSucsessState) {
-            return CustomDataPage();
+            return const CustomDataPage();
 
           }
           else if (state is WeatherFailureState) {

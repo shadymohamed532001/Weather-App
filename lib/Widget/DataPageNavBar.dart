@@ -142,7 +142,7 @@ class DataPageNavBar extends StatelessWidget {
                           ),
                            Text(
                             '${cubit.weatherModel!.temp.toInt()}°',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.w500,
                               color: Colors.black,
